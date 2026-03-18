@@ -1,16 +1,17 @@
 /* ========== Design tokens ========== */
 :root {
-  --bg-deep: #0a0e14;
-  --bg-panel: #0f1419;
-  --bg-elevated: #151b24;
+  --bg-deep: #070816;
+  --bg-panel: #0b1020;
+  --bg-elevated: #0f1730;
   --border: #1e2a3a;
   --text: #c8d0da;
   --text-dim: #6b7c8f;
-  --accent: #00d4aa;
-  --accent-dim: #00a884;
-  --cyan: #00b4d8;
-  --magenta: #ff00aa;
+  --accent: #00f5ff;
+  --accent-dim: #00bcd4;
+  --cyan: #00f5ff;
+  --magenta: #ff2bd6;
   --purple: #9d4edd;
+  --amber: #ffb000;
   --up: #00c853;
   --up-bg: rgba(0, 200, 83, 0.15);
   --down: #ff5252;
@@ -18,7 +19,8 @@
   --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
   --font-sans: "Segoe UI", system-ui, sans-serif;
   --sidebar-w: 220px;
-  --glow-accent: 0 0 20px rgba(0, 212, 170, 0.35);
+  --glow-accent: 0 0 24px rgba(0, 245, 255, 0.35);
+  --glow-magenta: 0 0 24px rgba(255, 43, 214, 0.35);
   --radius: 4px;
   --transition: 0.2s ease;
 }
@@ -38,9 +40,38 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-sans);
-  background: var(--bg-deep);
+  background: radial-gradient(1200px 700px at 15% 10%, rgba(157, 78, 237, 0.22), transparent 55%),
+    radial-gradient(900px 600px at 85% 15%, rgba(255, 43, 214, 0.14), transparent 55%),
+    radial-gradient(900px 600px at 55% 95%, rgba(0, 245, 255, 0.12), transparent 55%),
+    linear-gradient(180deg, var(--bg-deep) 0%, #05050f 100%);
   color: var(--text);
   line-height: 1.45;
+}
+
+/* Cyberpunk overlay: scanlines + vignette */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    rgba(0, 0, 0, 0) 3px,
+    rgba(0, 0, 0, 0) 6px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.45;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(900px 600px at 50% 30%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45));
+  opacity: 0.75;
 }
 
 /* Route radios: off-screen but not display:none (keeps labels working) */
@@ -145,7 +176,7 @@ body:has(.route-input:focus-visible) .nav {
 #route-crypto:checked ~ .app label[for="route-crypto"],
 #route-news:checked ~ .app label[for="route-news"] {
   color: var(--accent);
-  background: rgba(0, 212, 170, 0.08);
+  background: rgba(0, 245, 255, 0.08);
   border-color: var(--accent-dim);
   box-shadow: var(--glow-accent);
 }
@@ -159,7 +190,7 @@ label.nav-item:focus-visible {
 .main {
   overflow: auto;
   padding: 1.25rem 1.5rem 2rem;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, #0c1018 100%);
+  background: linear-gradient(180deg, rgba(7, 8, 22, 0.35) 0%, rgba(5, 5, 15, 0.2) 100%);
 }
 
 /* ========== Panels (routing) ========== */
@@ -185,6 +216,20 @@ label.nav-item:focus-visible {
   gap: 0.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
+}
+
+.ticker-wrap,
+.spark-row,
+.crypto-card,
+.donut-row,
+.news-head {
+  box-shadow: 0 0 0 1px rgba(0, 245, 255, 0.05), 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.ticker-wrap:hover,
+.spark-row:hover,
+.news-head:hover {
+  box-shadow: 0 0 0 1px rgba(0, 245, 255, 0.12), 0 0 28px rgba(0, 245, 255, 0.12), 0 16px 60px rgba(0, 0, 0, 0.45);
 }
 
 .panel-header h1 {
@@ -262,6 +307,11 @@ label.nav-item:focus-visible {
   .blink {
     animation: none;
     opacity: 1;
+  }
+
+  body::before,
+  body::after {
+    display: none;
   }
 }
 
@@ -514,6 +564,18 @@ label.nav-item:focus-visible {
   box-shadow: 0 12px 40px rgba(98, 126, 234, 0.3), 0 0 30px rgba(98, 126, 234, 0.2);
 }
 
+.crypto-card-doge:hover {
+  transform: translateY(-6px);
+  border-color: #d4af37;
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.22), 0 0 34px rgba(255, 176, 0, 0.16);
+}
+
+.crypto-card-xrp:hover {
+  transform: translateY(-6px);
+  border-color: #00f5ff;
+  box-shadow: 0 12px 40px rgba(0, 245, 255, 0.22), 0 0 34px rgba(0, 245, 255, 0.14);
+}
+
 .crypto-card-sol:hover {
   transform: translateY(-6px);
   border-color: #9945ff;
@@ -553,10 +615,12 @@ label.nav-item:focus-visible {
   height: 100%;
   border-radius: 50%;
   background: conic-gradient(
-    #f7931a 0deg 162deg,
-    #627eea 162deg 270deg,
-    #9945ff 270deg 324deg,
-    #4a5568 324deg 360deg
+    #f7931a 0deg 126deg,
+    #627eea 126deg 216deg,
+    #d4af37 216deg 252deg,
+    #00f5ff 252deg 288deg,
+    #9945ff 288deg 331.2deg,
+    #0033ad 331.2deg 360deg
   );
   -webkit-mask: radial-gradient(circle, transparent 45%, #000 46%);
   mask: radial-gradient(circle, transparent 45%, #000 46%);
@@ -592,11 +656,17 @@ label.nav-item:focus-visible {
 .sw-eth {
   background: #627eea;
 }
+.sw-doge {
+  background: #d4af37;
+}
+.sw-xrp {
+  background: #00f5ff;
+}
 .sw-sol {
   background: #9945ff;
 }
-.sw-other {
-  background: #4a5568;
+.sw-ada {
+  background: #0033ad;
 }
 
 /* ========== Page 3: Timeline + Accordion ========== */
