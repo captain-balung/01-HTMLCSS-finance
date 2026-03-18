@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Cursor (可視需要刪除此行以一併追蹤 .cursor)
+.cursor/
+
+# 暫存與本機設定
+*.log
+.env
+.env.local

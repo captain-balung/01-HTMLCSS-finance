@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pure CSS Financial Terminal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <input type="radio" name="route" id="route-us" class="route-input" checked aria-label="大盤與美股">
+  <input type="radio" name="route" id="route-crypto" class="route-input" aria-label="加密貨幣">
+  <input type="radio" name="route" id="route-news" class="route-input" aria-label="財經新聞">
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">BLOOM<span class="brand-accent">TERM</span><span class="blink" aria-hidden="true">_</span></div>
+      <p class="sidebar-tag">ZERO JS</p>
+      <nav class="nav" aria-label="主選單">
+        <label for="route-us" class="nav-item"><span class="nav-icon">▣</span> 大盤與美股</label>
+        <label for="route-crypto" class="nav-item"><span class="nav-icon">◈</span> 加密貨幣</label>
+        <label for="route-news" class="nav-item"><span class="nav-icon">▤</span> 財經新聞</label>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <!-- 頁面一：美股 -->
+      <section class="panel panel-us" aria-label="大盤與美股">
+        <header class="panel-header">
+          <h1>GLOBAL OVERVIEW / US MARKETS</h1>
+          <span class="panel-meta">STATIC DEMO · PURE CSS</span>
+        </header>
+
+        <div class="ticker-wrap" aria-hidden="true">
+          <div class="ticker">
+            <span class="ticker-item up">S&amp;P 500 <strong>5,234.18</strong> +0.42%</span>
+            <span class="ticker-item up">NASDAQ <strong>16,428.82</strong> +0.61%</span>
+            <span class="ticker-item down">VIX <strong>14.22</strong> −3.1%</span>
+            <span class="ticker-item up">DOW <strong>39,087.38</strong> +0.18%</span>
+            <span class="ticker-item up">RUSSELL <strong>2,041.26</strong> +0.55%</span>
+            <span class="ticker-item up">S&amp;P 500 <strong>5,234.18</strong> +0.42%</span>
+            <span class="ticker-item up">NASDAQ <strong>16,428.82</strong> +0.61%</span>
+            <span class="ticker-item down">VIX <strong>14.22</strong> −3.1%</span>
+            <span class="ticker-item up">DOW <strong>39,087.38</strong> +0.18%</span>
+            <span class="ticker-item up">RUSSELL <strong>2,041.26</strong> +0.55%</span>
+          </div>
+        </div>
+
+        <h2 class="section-title">板塊熱力圖</h2>
+        <div class="heatmap" role="img" aria-label="板塊漲跌熱力圖示意">
+          <div class="heat up">TECH<br><span class="heat-pct">+1.8%</span></div>
+          <div class="heat up">FIN<br><span class="heat-pct">+0.4%</span></div>
+          <div class="heat down">ENERGY<br><span class="heat-pct">−0.9%</span></div>
+          <div class="heat up">HC<br><span class="heat-pct">+0.2%</span></div>
+          <div class="heat down">CONS<br><span class="heat-pct">−0.3%</span></div>
+          <div class="heat up">IND<br><span class="heat-pct">+0.7%</span></div>
+          <div class="heat up">COMM<br><span class="heat-pct">+1.1%</span></div>
+          <div class="heat down">REIT<br><span class="heat-pct">−0.5%</span></div>
+          <div class="heat up">MAT<br><span class="heat-pct">+0.6%</span></div>
+        </div>
+
+        <h2 class="section-title">迷你走勢</h2>
+        <div class="spark-table">
+          <div class="spark-row">
+            <span class="spark-symbol">AAPL</span>
+            <div class="sparkline" title="AAPL 走勢示意">
+              <span class="bar" style="--h: 35%"></span>
+              <span class="bar" style="--h: 42%"></span>
+              <span class="bar" style="--h: 38%"></span>
+              <span class="bar" style="--h: 55%"></span>
+              <span class="bar" style="--h: 48%"></span>
+              <span class="bar" style="--h: 62%"></span>
+              <span class="bar" style="--h: 58%"></span>
+              <span class="bar" style="--h: 72%"></span>
+              <span class="bar" style="--h: 68%"></span>
+              <span class="bar" style="--h: 85%"></span>
+            </div>
+            <span class="spark-chg up">+2.31%</span>
+          </div>
+          <div class="spark-row">
+            <span class="spark-symbol">MSFT</span>
+            <div class="sparkline">
+              <span class="bar" style="--h: 55%"></span>
+              <span class="bar" style="--h: 52%"></span>
+              <span class="bar" style="--h: 60%"></span>
+              <span class="bar" style="--h: 58%"></span>
+              <span class="bar" style="--h: 65%"></span>
+              <span class="bar" style="--h: 70%"></span>
+              <span class="bar" style="--h: 68%"></span>
+              <span class="bar" style="--h: 75%"></span>
+              <span class="bar" style="--h: 80%"></span>
+              <span class="bar" style="--h: 78%"></span>
+            </div>
+            <span class="spark-chg up">+0.89%</span>
+          </div>
+          <div class="spark-row">
+            <span class="spark-symbol">NVDA</span>
+            <div class="sparkline">
+              <span class="bar" style="--h: 90%"></span>
+              <span class="bar" style="--h: 88%"></span>
+              <span class="bar" style="--h: 92%"></span>
+              <span class="bar" style="--h: 85%"></span>
+              <span class="bar" style="--h: 78%"></span>
+              <span class="bar" style="--h: 82%"></span>
+              <span class="bar" style="--h: 88%"></span>
+              <span class="bar" style="--h: 95%"></span>
+              <span class="bar" style="--h: 100%"></span>
+              <span class="bar" style="--h: 96%"></span>
+            </div>
+            <span class="spark-chg up">+4.12%</span>
+          </div>
+          <div class="spark-row">
+            <span class="spark-symbol">JPM</span>
+            <div class="sparkline down">
+              <span class="bar" style="--h: 70%"></span>
+              <span class="bar" style="--h: 65%"></span>
+              <span class="bar" style="--h: 68%"></span>
+              <span class="bar" style="--h: 55%"></span>
+              <span class="bar" style="--h: 50%"></span>
+              <span class="bar" style="--h: 48%"></span>
+              <span class="bar" style="--h: 45%"></span>
+              <span class="bar" style="--h: 42%"></span>
+              <span class="bar" style="--h: 40%"></span>
+              <span class="bar" style="--h: 38%"></span>
+            </div>
+            <span class="spark-chg down">−0.67%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 頁面二：加密 -->
+      <section class="panel panel-crypto" aria-label="加密貨幣">
+        <header class="panel-header">
+          <h1>CRYPTO WATCHLIST</h1>
+          <span class="panel-meta neon">NEON MODE</span>
+        </header>
+
+        <div class="crypto-grid">
+          <article class="crypto-card crypto-card-btc">
+            <h3>BTC</h3>
+            <p class="crypto-price">$67,420</p>
+            <p class="crypto-sub">Bitcoin</p>
+            <span class="crypto-badge up">+1.2% 24h</span>
+          </article>
+          <article class="crypto-card crypto-card-eth">
+            <h3>ETH</h3>
+            <p class="crypto-price">$3,512</p>
+            <p class="crypto-sub">Ethereum</p>
+            <span class="crypto-badge up">+0.8%</span>
+          </article>
+          <article class="crypto-card crypto-card-sol">
+            <h3>SOL</h3>
+            <p class="crypto-price">$142.80</p>
+            <p class="crypto-sub">Solana</p>
+            <span class="crypto-badge down">−2.1%</span>
+          </article>
+          <article class="crypto-card crypto-card-ada">
+            <h3>ADA</h3>
+            <p class="crypto-price">$0.58</p>
+            <p class="crypto-sub">Cardano</p>
+            <span class="crypto-badge up">+0.3%</span>
+          </article>
+        </div>
+
+        <div class="donut-section">
+          <h2 class="section-title neon-title">資產配置</h2>
+          <div class="donut-row">
+            <div class="donut-wrap" role="img" aria-label="配置：BTC 45%、ETH 30%、SOL 15%、其他 10%">
+              <div class="donut"></div>
+            </div>
+            <ul class="donut-legend">
+              <li><span class="lg sw-btc"></span> BTC 45%</li>
+              <li><span class="lg sw-eth"></span> ETH 30%</li>
+              <li><span class="lg sw-sol"></span> SOL 15%</li>
+              <li><span class="lg sw-other"></span> 其他 10%</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 頁面三：新聞 -->
+      <section class="panel panel-news" aria-label="國際財經新聞">
+        <header class="panel-header">
+          <h1>INTERNATIONAL NEWS</h1>
+          <span class="panel-meta">TIMELINE + ACCORDION</span>
+        </header>
+
+        <div class="timeline">
+          <article class="news-item">
+            <input type="checkbox" id="news-1" class="news-toggle">
+            <label for="news-1" class="news-head">
+              <time datetime="2025-03-18">2025-03-18 09:30</time>
+              <span class="news-title-text">Fed 官員：利率路徑仍依數據而定</span>
+              <span class="news-chevron" aria-hidden="true">▼</span>
+            </label>
+            <div class="news-body">
+              <p>聯準會多位官員於公開談話中重申，未來升息或降息步伐將持續觀察通膨與就業數據，市場解讀為短期內政策基調維持謹慎。</p>
+            </div>
+          </article>
+
+          <article class="news-item">
+            <input type="checkbox" id="news-2" class="news-toggle">
+            <label for="news-2" class="news-head">
+              <time datetime="2025-03-17">2025-03-17 22:15</time>
+              <span class="news-title-text">歐股收高，德國 DAX 創波段新高</span>
+              <span class="news-chevron" aria-hidden="true">▼</span>
+            </label>
+            <div class="news-body">
+              <p>受企業財報優於預期與工業訂單回溫帶動，歐洲主要指數齊揚；投資人關注本週歐央行會議紀要對降息時點的暗示。</p>
+            </div>
+          </article>
+
+          <article class="news-item">
+            <input type="checkbox" id="news-3" class="news-toggle">
+            <label for="news-3" class="news-head">
+              <time datetime="2025-03-17">2025-03-17 14:00</time>
+              <span class="news-title-text">亞洲債市資金回流，日圓波動收窄</span>
+              <span class="news-chevron" aria-hidden="true">▼</span>
+            </label>
+            <div class="news-body">
+              <p>區內央行政策預期穩定下，外資重新配置亞債；日圓兌美元在區間內整理，分析師認為短期仍受美日利差主導。</p>
+            </div>
+          </article>
+
+          <article class="news-item">
+            <input type="checkbox" id="news-4" class="news-toggle">
+            <label for="news-4" class="news-head">
+              <time datetime="2025-03-16">2025-03-16 11:20</time>
+              <span class="news-title-text">油價持平，OPEC+ 產量政策受矚目</span>
+              <span class="news-chevron" aria-hidden="true">▼</span>
+            </label>
+            <div class="news-body">
+              <p>布蘭特原油圍繞每桶 82 美元整理；市場等待下月產量會議是否延長減產，能源股盤中表現分歧。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
